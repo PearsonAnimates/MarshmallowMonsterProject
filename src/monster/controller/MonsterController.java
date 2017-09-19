@@ -50,6 +50,30 @@ public class MonsterController
 			System.out.println("Ouch!!! That hurts... I've only got " + currentMonster.getArmCount() + " arms left");
 		}
 		
+		System.out.println("... don't do that, don't look at my edible and delicous tentacles like that, I'm not food!!!");
+		System.out.println("Console: Input a number of how many tentacles you'd like to eat (must be a double, Eg: 1.1, 0.0, 3.7, etc.)");
+		System.out.println("Jerry has " + currentMonster.getTentacleAmount() + " tentacles.");
+		double tentacleEat = myScanner.nextInt();
+		
+		if(tentacleEat == 0)
+		{
+			System.out.println("YYYYYYYAAAAAAASSSSSSSS!!!! I still have my tentacle(s)!!!! :D");
+		}
+		else if(tentacleEat > 0)
+		{
+			System.out.println("You know wha- I'm not even gonn- no. no... hmm. NO. Y U B SO DUM!? YOU CAN'T EAT A NEGATIVE AMOU-- GRGAERASD!! -_- *applause*");
+		}
+		else if(tentacleEat - currentMonster.getTentacleAmount() > 0)
+		{
+			System.out.println("I don't even have that many tentacles... No comment... :|");
+		}
+		else
+		{
+			currentMonster.setTentacleAmount(currentMonster.getTentacleAmount() - tentacleEat);
+			System.out.println("OH MY GOD THE PAIN!!! IT HURTS SO MUCH!!! AHHHAHAHAHAHAHAHHA!!!! T.T");
+			System.out.println("Jerry only has " + currentMonster.getTentacleAmount() + "tentacle(s) left");
+		}
+		
 		myScanner.close();
 	}
 }
