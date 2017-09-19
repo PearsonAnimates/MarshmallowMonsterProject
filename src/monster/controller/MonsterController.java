@@ -26,14 +26,29 @@ public class MonsterController
 		System.out.println(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
 		int consumed = myScanner.nextInt();
 		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-		System.out.println(currentMonster.getName() + " Says: I only have " + currentMonster.getEyeCount() + " eyes now... ouch, it hurts so much!!! Please don't take anything else!!!");
-		System.out.println("Bye Jerry. *nom* *nom* nom* *nom* *nom*");
-		currentMonster.setEyeCount(0);
-		currentMonster.setArmCount(0);
-		currentMonster.setTentacleAmount(0.0);
-		currentMonster.setBloop(false);
-		System.out.println(currentMonster.getName() + " is now completely eaten");
+		System.out.println(currentMonster);
 		
+		System.out.println("Please leave my arms alone! Or I'll bite you! I've only got " + currentMonster.getArmCount());
+		//consumed = myScannerInt();
+		int armEat = myScanner.nextInt();
+		
+		if(armEat == 0)
+		{
+			System.out.println("Thank you for letting me keep my arms!!!");
+		}
+		else if(armEat > 0)
+		{
+			System.out.println("Eating negative arms huh? Not possible exactly possible. Reality mus be hard to understand for you!!! XD");
+		}
+		else if(armEat - currentMonster.getArmCount() > 0)
+		{
+			System.out.println("I don't have that many arms smart one.");
+		}
+		else
+		{
+			currentMonster.setArmCount(currentMonster.getArmCount() - armEat);
+			System.out.println("Ouch!!! That hurts... I've only got " + currentMonster.getArmCount() + " arms left");
+		}
 		
 		myScanner.close();
 	}
