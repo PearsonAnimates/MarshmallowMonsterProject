@@ -1,10 +1,18 @@
 package monster.controller;
 
 import monster.model.MarshmallowMonster;
+import monster.view.MonsterDisplay;
+
 import java.util.Scanner;
 
 public class MonsterController
 {
+	private MonsterDisplay popup;
+	
+	public MonsterController()
+	{
+		popup = new MonsterDisplay();
+	}
 
 	public void start()
 	{
@@ -53,17 +61,17 @@ public class MonsterController
 		System.out.println("... don't do that, don't look at my edible and delicous tentacles like that, I'm not food!!!");
 		System.out.println("Console: Input a number of how many tentacles you'd like to eat (must be a double, Eg: 1.1, 0.0, 3.7, etc.)");
 		System.out.println("Jerry has " + currentMonster.getTentacleAmount() + " tentacles.");
-		double tentacleEat = myScanner.nextInt();
+		double tentacleEat = myScanner.nextDouble();
 		
-		if(tentacleEat == 0)
+		if(tentacleEat == 0.0)
 		{
 			System.out.println("YYYYYYYAAAAAAASSSSSSSS!!!! I still have my tentacle(s)!!!! :D");
 		}
-		else if(tentacleEat > 0)
+		else if(tentacleEat > 0.0)
 		{
 			System.out.println("You know wha- I'm not even gonn- no. no... hmm. NO. Y U B SO DUM!? YOU CAN'T EAT A NEGATIVE AMOU-- GRGAERASD!! -_- *applause*");
 		}
-		else if(tentacleEat - currentMonster.getTentacleAmount() > 0)
+		else if(tentacleEat - currentMonster.getTentacleAmount() < 0.0)
 		{
 			System.out.println("I don't even have that many tentacles... No comment... :|");
 		}
@@ -73,6 +81,10 @@ public class MonsterController
 			System.out.println("OH MY GOD THE PAIN!!! IT HURTS SO MUCH!!! AHHHAHAHAHAHAHAHHA!!!! T.T");
 			System.out.println("Jerry only has " + currentMonster.getTentacleAmount() + "tentacle(s) left");
 		}
+		
+		popup.displayText("Hi there, ready to play???");
+		String answer = popup.getResponse("What is the air speed of a coconut laden swallow?");
+		System.out.println(answer);
 		
 		myScanner.close();
 	}
