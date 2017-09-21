@@ -36,65 +36,184 @@ public class MonsterController
 	{
 		Scanner myScanner = new Scanner(System.in);
 //		System.out.println(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
-		int consumed; 
+		int consumed = 0; 
 		String response = popup.getResponse(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
-				
-		consumed = Integer.parseInt(response);
+		
+		if(isValidInteger(response))
+		{
+			consumed = Integer.parseInt(response);
+		}
 				
 		//int consumed = myScanner.nextInt();
 		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-		System.out.println(currentMonster);		
-		System.out.println("LEAVE MY ARMS ALONE!!! Or I'll bite you! I've only got " + currentMonster.getArmCount() + " arms left!");
-		System.out.println("Console: type in the amount of arms you want to eat. Must be a number, 0 is valid.");
+		//System.out.println(currentMonster);
+		popup.displayText(currentMonster.toString());
+		//System.out.println("LEAVE MY ARMS ALONE!!! Or I'll bite you! I've only got " + currentMonster.getArmCount() + " arms left!");
+		popup.displayText("LEAVE MY ARMS ALONE!!! Or I'll bite you! I've only got " + currentMonster.getArmCount() + " arms left!");
 		//consumed = myScannerInt();
-		int armEat = myScanner.nextInt();
+		int armEat = 0;
+		String response1 = popup.getResponse("Console: type in the amount of arms you want to eat. Must be a number, 0 is valid.");
+		
+		if(isValidInteger(response1))
+		{
+			armEat = Integer.parseInt(response1);
+		}
 		
 		if(armEat == 0)
 		{
-			System.out.println("That's a relief... still go all my arms... phew...");
+			//System.out.println("That's a relief... still go all my arms... phew...");
+			popup.displayText("That's a relief... still go all my arms... phew...");
 		}
-		else if(armEat > 0)
+		else if(armEat < 0)
 		{
-			System.out.println("Eating negative arms huh? Not possible exactly possible. Reality mus be hard to understand for you!!! XD");
+			//System.out.println("Eating negative arms huh? Not possible exactly possible. Reality must be hard to understand for you!!! XD");
+			popup.displayText("Eating negative arms huh? Not possible exactly possible. Reality must be hard to understand for you!!! XD");
 		}
-		else if(armEat - currentMonster.getArmCount() > 0)
+		else if(armEat - currentMonster.getArmCount() < 0)
 		{
-			System.out.println("I don't have that many arms smart one.");
+			//System.out.println("I don't have that many arms smart one.");
+			popup.displayText("I don't have that many arms smart one.");
 		}
 		else
 		{
 			currentMonster.setArmCount(currentMonster.getArmCount() - armEat);
-			System.out.println("Ouch!!! That hurts... I've only got " + currentMonster.getArmCount() + " arms left");
+			//System.out.println("Ouch!!! That hurts... I've only got " + currentMonster.getArmCount() + " arms left");
+			popup.displayText("Ouch!!! That hurts... I've only got " + currentMonster.getArmCount() + " arms left");
 		}
 		
-		System.out.println("... don't do that, don't look at my edible and delicous tentacles like that, I'm not food!!!");
-		System.out.println("Console: Input a number of how many tentacles you'd like to eat (must be a double, Eg: 1.1, 0.0, 3.7, etc.)");
-		System.out.println("Jerry has " + currentMonster.getTentacleAmount() + " tentacles.");
-		double tentacleEat = myScanner.nextDouble();
+		//System.out.println("... don't do that, don't look at my edible and delicious tentacles like that, I'm not food!!!");
+		popup.displayText("... don't do that, don't look at my edible and delicious tentacles like that, I'm not food!!!");
+		//System.out.println("Console: Input a number of how many tentacles you'd like to eat (must be a double, Eg: 1.1, 0.0, 3.7, etc.)");
+		popup.displayText("Console: Input a number of how many tentacles you'd like to eat (must be a double, Eg: 1.1, 0.0, 3.7, etc.)");
+		//System.out.println("Jerry has " + currentMonster.getTentacleAmount() + " tentacles.");
+		popup.displayText("Jerry has " + currentMonster.getTentacleAmount() + " tentacles.");
 		
+		double tentacleEat = 0.0;
+		String tentacleResponse = popup.getResponse("Console: type in the amount of tentacles you want to eat. Must be a number, 0.0 is valid.");
+		
+		if(isValidDouble(tentacleResponse))
+		{
+			tentacleEat = Double.parseDouble(tentacleResponse);
+		}
+				
 		if(tentacleEat == 0.0)
 		{
-			System.out.println("YYYYYYYAAAAAAASSSSSSSS!!!! I still have my tentacle(s)!!!! :D");
+			//System.out.println("YYYYYYYAAAAAAASSSSSSSS!!!! I still have my tentacle(s)!!!! :D");
+			popup.displayText("YYYYYYYAAAAAAASSSSSSSS!!!! I still have my tentacle(s)!!!! :D");
 		}
-		else if(tentacleEat > 0.0)
+		else if(tentacleEat < 0.0)
 		{
-			System.out.println("You know wha- I'm not even gonn- no. no... hmm. NO. Y U B SO DUM!? YOU CAN'T EAT A NEGATIVE AMOU-- GRGAERASD!! -_- *applause*");
+			//System.out.println("You know wha- I'm not even gonn- no. no... hmm. NO. Y U B SO DUM!? YOU CAN'T EAT A NEGATIVE AMOU-- GRGAERASD!! -_- *applause*");
+			popup.displayText("You know wha- I'm not even gonn- no. no... hmm. NO. Y U B SO DUM!? YOU CAN'T EAT A NEGATIVE AMOU-- GRGAERASD!! -_- *applause*");
 		}
 		else if(tentacleEat - currentMonster.getTentacleAmount() < 0.0)
 		{
-			System.out.println("I don't even have that many tentacles... No comment... :|");
+			//System.out.println("I don't even have that many tentacles... No comment... :|");
+			popup.displayText("I don't even have that many... ugh... :|");
 		}
 		else
 		{
 			currentMonster.setTentacleAmount(currentMonster.getTentacleAmount() - tentacleEat);
-			System.out.println("OH MY GOD THE PAIN!!! IT HURTS SO MUCH!!! AHHHAHAHAHAHAHAHHA!!!! T.T");
-			System.out.println("Jerry only has " + currentMonster.getTentacleAmount() + "tentacle(s) left");
+			//System.out.println("OH MY GOD THE PAIN!!! IT HURTS SO MUCH!!! AHHHAHAHAHAHAHAHHA!!!! T.T");
+			popup.displayText("OH MY GOD THE PAIN!!! IT HURTS SO MUCH!!! AHHHAHAHAHAHAHAHHA!!!! T.T");
+			//System.out.println("Jerry only has " + currentMonster.getTentacleAmount() + "tentacle(s) left");
+			popup.displayText("Jerry only has " + currentMonster.getTentacleAmount() + " tentacle(s) left");
 		}
 		
-		popup.displayText("Hi there, ready to play???");
-		String answer = popup.getResponse("Can you fart?");
-		System.out.println(answer);
+		popup.displayText(currentMonster.getName() + " says: leave ma bloop alone!");
+		int eatBloop = 0;
+		String Eat = popup.getResponse("Console: will you eat " + currentMonster.getName() + "'s Bloop? 1 - Yes 2 - No");
+		if(isValidInteger(Eat))
+		{
+			eatBloop = Integer.parseInt(Eat);
+		}
+		
+		if(eatBloop == 1)
+		{
+			currentMonster.setBloop(false);
+			popup.displayText("Ouch! That hurts!!! T.T");
+			if(currentMonster.getArmCount() == 0)
+			{
+				if(currentMonster.getEyeCount() == 0)
+				{
+					if(currentMonster.getTentacleAmount() == 0.0)
+					{
+						popup.displayText(currentMonster.getName() + " is now dead.");
+						popup.displayText(currentMonster.getName() + "'s ghost: you killed me... Want to play? >:) Now...");
+						popup.getResponse("Can you fart?");
+						popup.displayText("Cool! Bye. :]");
+						
+					}
+					else
+					{
+						popup.displayText(currentMonster.getName() + " still lives!!! :D");
+					}
+				}
+				else
+				{
+					popup.displayText(currentMonster.getName() + " still lives!!! :D");
+				}
+			}
+			else
+			{
+				popup.displayText(currentMonster.getName() + " still lives!!! :D");
+			}
+		}
+		else
+		{
+			popup.displayText(currentMonster.getName() + " still lives!!! :D");
+		}
 		
 		myScanner.close();
+	}
+	
+	//Helper methods
+	private boolean isValidInteger(String sample)
+	{
+		boolean valid = false;
+		
+		try
+		{
+			Integer.parseInt(sample);
+			valid = true;
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("You need to input an int, " + sample + " is not valid.");
+		}
+		
+		return valid;
+	}
+	
+	private boolean isValidDouble(String sampleDouble)
+	{
+		boolean valid = false;
+		try
+		{
+			Double.parseDouble(sampleDouble);
+			valid = true;
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("You need to type in a double, " + sampleDouble + " is not a valid answer.");
+		}
+		return valid;
+	}
+	
+	private boolean isValidBoolean(String sampleBoolean)
+	{
+		boolean valid = false;
+		
+		try
+		{
+			Boolean.parseBoolean(sampleBoolean);
+			valid = true;
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("Type in a boolean value, " + sampleBoolean + " does not count.");
+		}
+		
+		return valid;
 	}
 }
