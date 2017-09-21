@@ -36,13 +36,14 @@ public class MonsterController
 		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
 		System.out.println(currentMonster);
 		
-		System.out.println("Please leave my arms alone! Or I'll bite you! I've only got " + currentMonster.getArmCount());
+		System.out.println("LEAVE MY ARMS ALONE!!! Or I'll bite you! I've only got " + currentMonster.getArmCount() + " arms left!");
+		System.out.println("Console: type in the amount of arms you want to eat. Must be a number, 0 is valid.");
 		//consumed = myScannerInt();
 		int armEat = myScanner.nextInt();
 		
 		if(armEat == 0)
 		{
-			System.out.println("Thank you for letting me keep my arms!!!");
+			System.out.println("That's a relief... still go all my arms... phew...");
 		}
 		else if(armEat > 0)
 		{
