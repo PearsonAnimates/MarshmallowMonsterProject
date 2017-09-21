@@ -83,7 +83,7 @@ public class MonsterController
 		}
 		
 		popup.displayText("Hi there, ready to play???");
-		String answer = popup.getResponse("What is the air speed of a coconut laden swallow?");
+		String answer = popup.getResponse("Can you fart?");
 		System.out.println(answer);
 		
 		myScanner.close();
