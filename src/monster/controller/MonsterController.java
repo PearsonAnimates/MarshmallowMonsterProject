@@ -17,12 +17,16 @@ public class MonsterController
 	public void start()
 	{
 		MarshmallowMonster basic = new MarshmallowMonster();
-		System.out.println(basic);
+//		System.out.println(basic);
+		popup.displayText(basic.toString());
 		MarshmallowMonster Jerry = new MarshmallowMonster("Undead Marshmallow Jerry Pawn Zombie", 7, 4, 0.7, true);
-		System.out.println(Jerry);
-		System.out.println("I'm feeling hungry, I'm going to eat you Jerry... despite the fact you're a dead rotten corpse... MMM I CAN TASTE THE CALORIES, SO DELICIOUS!!!");
+//		System.out.println(Jerry);
+		popup.displayText(Jerry.toString());
+//		System.out.println("I'm feeling hungry, I'm going to eat you Jerry... despite the fact you're a dead rotten corpse... MMM I CAN TASTE THE CALORIES, SO DELICIOUS!!!");
+		popup.displayText("I'm feeling hungry, I'm going to eat you Jerry... despite the fact you're a dead rotten corpse... MMM I CAN TASTE THE CALORIES, SO DELICIOUS!!!");
 		Jerry.setEyeCount(Jerry.getEyeCount() - 1);
-		System.out.println("Why would you do this!? I only have " + Jerry.getEyeCount() + " eyes now!!!");
+//		System.out.println("Why would you do this!? I only have " + Jerry.getEyeCount() + " eyes now!!!");
+		popup.displayText("Why would you do this!? I only have " + Jerry.getEyeCount() + " eyes now!!!");
 		
 		interactWithMonster(Jerry);
 		
@@ -31,11 +35,15 @@ public class MonsterController
 	private void interactWithMonster(MarshmallowMonster currentMonster)
 	{
 		Scanner myScanner = new Scanner(System.in);
-		System.out.println(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
-		int consumed = myScanner.nextInt();
+//		System.out.println(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
+		int consumed; 
+		String response = popup.getResponse(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
+				
+		consumed = Integer.parseInt(response);
+				
+		//int consumed = myScanner.nextInt();
 		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-		System.out.println(currentMonster);
-		
+		System.out.println(currentMonster);		
 		System.out.println("LEAVE MY ARMS ALONE!!! Or I'll bite you! I've only got " + currentMonster.getArmCount() + " arms left!");
 		System.out.println("Console: type in the amount of arms you want to eat. Must be a number, 0 is valid.");
 		//consumed = myScannerInt();
