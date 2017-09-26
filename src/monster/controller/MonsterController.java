@@ -16,6 +16,17 @@ public class MonsterController
 
 	public void start()
 	{
+		int count = 0;
+		while(count < 10)
+		{
+			popup.displayText("I hate you, enjoy this popup, it will never go away, unless you hit the ok button enough times");
+			count +=2;
+		}
+		
+		
+		
+		
+		
 		MarshmallowMonster basic = new MarshmallowMonster();
 //		System.out.println(basic);
 		popup.displayText(basic.toString());
