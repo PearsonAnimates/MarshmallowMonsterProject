@@ -16,17 +16,17 @@ public class MonsterController
 
 	public void start()
 	{
-		int count = 0;
+//		int count = 0;
 //		while(count < 10)
 //		{
 //			popup.displayText("I hate you, enjoy this popup, it will never go away, unless you hit the ok button enough times");
 //			count +=2;
 //		}
 		
-		for(int loop = 0; loop < 10; loop =+1)
-		{
-			
-		}
+//		for(int loop = 0; loop < 10; loop =+1)
+//		{
+//			popup.displayText("This is loop #" + (loop +1) + " of ten");
+//		}
 		
 		
 		
@@ -54,6 +54,13 @@ public class MonsterController
 //		System.out.println(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
 		int consumed = 0; 
 		String response = popup.getResponse(currentMonster.getName() + " Says: How many of my eyes will you eat!? Geez!!! (write number)");
+		
+		while(!isValidInteger(response))
+		{
+			popup.getResponse(currentMonster.getName() + " says: I want a better answer... BUTTNUGGET");
+			response = popup.getResponse(currentMonster.getName() + " says: I want an integer value!!! BUTTNUGGET!!!");
+		}
+		
 		
 		if(isValidInteger(response))
 		{
