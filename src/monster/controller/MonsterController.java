@@ -57,15 +57,16 @@ public class MonsterController
 		
 		while(!isValidInteger(response))
 		{
-			popup.getResponse(currentMonster.getName() + " says: I want a better answer... BUTTNUGGET");
-			response = popup.getResponse(currentMonster.getName() + " says: I want an integer value!!! BUTTNUGGET!!!");
+			popup.displayText("Type an integer. Like any number you learned in first grade.");
+			response = popup.getResponse("now put in an integer");
 		}
+		consumed = Integer.parseInt(response);
 		
 		
-		if(isValidInteger(response))
-		{
-			consumed = Integer.parseInt(response);
-		}
+//		if(isValidInteger(response))
+//		{
+//			consumed = Integer.parseInt(response);
+//		}
 				
 		//int consumed = myScanner.nextInt();
 		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
@@ -77,10 +78,17 @@ public class MonsterController
 		int armEat = 0;
 		String response1 = popup.getResponse("Console: type in the amount of arms you want to eat. Must be a number, 0 is valid.");
 		
-		if(isValidInteger(response1))
+		while(!isValidInteger(response1))
 		{
-			armEat = Integer.parseInt(response1);
+			popup.displayText("Type an integer. Like any number you learned in first grade.");
+			response1 = popup.getResponse("now put in an integer");
 		}
+		armEat = Integer.parseInt(response1);
+		
+//		if(isValidInteger(response1))
+//		{
+//			armEat = Integer.parseInt(response1);
+//		}
 		
 		if(armEat == 0)
 		{
@@ -114,10 +122,17 @@ public class MonsterController
 		double tentacleEat = 0.0;
 		String tentacleResponse = popup.getResponse("Console: type in the amount of tentacles you want to eat. Must be a number, 0.0 is valid.");
 		
-		if(isValidDouble(tentacleResponse))
+		while(!isValidDouble(tentacleResponse))
 		{
-			tentacleEat = Double.parseDouble(tentacleResponse);
+			popup.displayText("Type an double. Like 0.0");
+			tentacleResponse = popup.getResponse("Now enter a double");
 		}
+		tentacleEat = Double.parseDouble(tentacleResponse);
+		
+//		if(isValidDouble(tentacleResponse))
+//		{
+//			tentacleEat = Double.parseDouble(tentacleResponse);
+//		}
 				
 		if(tentacleEat == 0.0)
 		{
@@ -146,10 +161,18 @@ public class MonsterController
 		popup.displayText(currentMonster.getName() + " says: leave ma bloop alone!");
 		int eatBloop = 0;
 		String Eat = popup.getResponse("Console: will you eat " + currentMonster.getName() + "'s Bloop? 1 - Yes 2 - No");
-		if(isValidInteger(Eat))
+		
+		while(!isValidInteger(Eat))
 		{
-			eatBloop = Integer.parseInt(Eat);
+			popup.getResponse(currentMonster.getName() + " says: Type an integer. Like any number you learned in first grade.");
+			Eat = popup.getResponse("now enter an integer, 1 - yes 2 - no. Stop being dumb");
 		}
+		eatBloop = Integer.parseInt(Eat);
+		
+//		if(isValidInteger(Eat))
+//		{
+//			eatBloop = Integer.parseInt(Eat);
+//		}
 		
 		if(eatBloop == 1)
 		{
