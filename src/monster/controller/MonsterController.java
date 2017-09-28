@@ -49,9 +49,26 @@ public class MonsterController
 		
 		monsterList.add(basic);
 		monsterList.add(Jerry);
+		useList();
 		
 		interactWithMonster(Jerry);
 		
+	}
+	
+	private void useList()
+	{
+		for (int index = 0; index <monsterList.size(); index++)
+		{
+			MarshmallowMonster currentMonster = monsterList.get(index);
+			popup.displayText(currentMonster.getName());
+			String updateName = popup.getResponse("Want to name me? What should it be?");
+			currentMonster.setName(updateName + "(rude joke here)");
+			popup.displayText("My new name is now " + currentMonster.getName() + "... that is a terrible name you gave me!!! D:<");
+		}
+		for (MarshmallowMonster current : monsterList)
+		{
+			popup.displayText("My new name is " + current.getName());
+		}
 	}
 	
 	private void interactWithMonster(MarshmallowMonster currentMonster)
