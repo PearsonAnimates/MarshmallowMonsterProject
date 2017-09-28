@@ -2,16 +2,19 @@ package monster.controller;
 
 import monster.model.MarshmallowMonster;
 import monster.view.MonsterDisplay;
-
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class MonsterController
 {
 	private MonsterDisplay popup;
+	private List<MarshmallowMonster> monsterList;
 	
 	public MonsterController()
 	{
 		popup = new MonsterDisplay();
+		monsterList = new ArrayList<MarshmallowMonster>();
 	}
 
 	public void start()
@@ -43,6 +46,9 @@ public class MonsterController
 		Jerry.setEyeCount(Jerry.getEyeCount() - 1);
 //		System.out.println("Why would you do this!? I only have " + Jerry.getEyeCount() + " eyes now!!!");
 		popup.displayText("Why would you do this!? I only have " + Jerry.getEyeCount() + " eyes now!!!");
+		
+		monsterList.add(basic);
+		monsterList.add(Jerry);
 		
 		interactWithMonster(Jerry);
 		
