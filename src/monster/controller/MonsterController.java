@@ -201,27 +201,12 @@ public class MonsterController
 		{
 			currentMonster.setBloop(false);
 			popup.displayText("Ouch! That hurts!!! T.T");
-			if(currentMonster.getArmCount() == 0)
+			if(currentMonster.getArmCount() == 0 && currentMonster.getEyeCount() == 0 && currentMonster.getTentacleAmount() == 0)
 			{
-				if(currentMonster.getEyeCount() == 0)
-				{
-					if(currentMonster.getTentacleAmount() == 0.0)
-					{
-						popup.displayText(currentMonster.getName() + " is now dead.");
-						popup.displayText(currentMonster.getName() + "'s ghost: you killed me... Want to play? >:) Now...");
-						popup.getResponse("Can you fart?");
-						popup.displayText("Cool! Bye. :]");
-						
-					}
-					else
-					{
-						popup.displayText(currentMonster.getName() + " still lives!!! :D");
-					}
-				}
-				else
-				{
-					popup.displayText(currentMonster.getName() + " still lives!!! :D");
-				}
+				popup.displayText(currentMonster.getName() + " is now dead.");
+				popup.displayText(currentMonster.getName() + "'s ghost: you killed me... Want to play? >:) Now...");
+				popup.getResponse("Can you fart?");
+				popup.displayText("Cool! Bye. :]");
 			}
 			else
 			{
